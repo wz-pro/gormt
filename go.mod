@@ -9,14 +9,15 @@ require (
 	github.com/nicksnyder/go-i18n/v2 v2.0.3
 	github.com/spf13/cobra v1.0.0
 	github.com/xxjwxc/public v0.0.0-20210709073023-f6ec6fb9bcb4
-	golang.org/x/text v0.3.3
+	golang.org/x/text v0.3.7
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/go-playground/validator.v9 v9.30.2
-	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c
-	gorm.io/driver/mysql v1.0.1
-	gorm.io/driver/sqlite v1.1.4
-	gorm.io/driver/sqlserver v1.0.7
-	gorm.io/gorm v1.21.4
+	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+	gorm.io/datatypes v1.0.7
+	gorm.io/driver/mysql v1.3.2
+	gorm.io/driver/sqlite v1.3.1
+	gorm.io/driver/sqlserver v1.3.1
+	gorm.io/gorm v1.23.6
 )
 
 // replace github.com/xxjwxc/public => ../public

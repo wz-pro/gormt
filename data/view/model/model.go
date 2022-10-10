@@ -3,6 +3,7 @@ package model
 import (
 	"bytes"
 	"fmt"
+	"log"
 	"strings"
 	"text/template"
 
@@ -121,6 +122,25 @@ func (m *_Model) generate() string {
 	m.GetPackage()
 	return m.pkg.Generate()
 }
+func FirstUpper(s string) string {
+	if s == "" {
+		return ""
+	}
+	return strings.ToUpper(s[:1]) + s[1:]
+}
+
+func formNameToCamel(name string) string {
+	names := strings.Split(strings.ToLower(name), "_")
+	var results []string
+	for index, item := range names {
+		if index > 0 {
+			results = append(results, FirstUpper(item))
+		} else {
+			results = append(results, item)
+		}
+	}
+	return strings.Join(results, "")
+}
 
 // genTableElement Get table columns and comments.获取表列及注释
 func (m *_Model) genTableElement(cols []ColumnsInfo) (el []genstruct.GenElement) {
@@ -209,7 +229,8 @@ func (m *_Model) genTableElement(cols []ColumnsInfo) (el []genstruct.GenElement)
 					tmp.AddTag(_tagJSON, "-")
 				} else {
 					if config.GetWebTagType() == 0 {
-						tmp.AddTag(_tagJSON, mybigcamel.UnSmallMarshal(mybigcamel.Marshal(v.Name)))
+						log.Printf("v.Name:%s", formNameToCamel(v.Name))
+						tmp.AddTag(_tagJSON, formNameToCamel(v.Name))
 					} else {
 						tmp.AddTag(_tagJSON, mybigcamel.UnMarshal(v.Name))
 					}
